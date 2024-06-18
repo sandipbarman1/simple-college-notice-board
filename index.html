@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Siliguri Government Polytechnic Notice Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .notice-board {
+      margin-top: 20px;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    .notice {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .notice-title {
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .notice-content {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .notice-date {
+      color: #888;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .notice-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .notice-actions a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .notice-actions a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .add-notice-form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    .form-group textarea {
+      height: 100px;
+    }
+
+    .form-group button {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .notice-view {
+      margin-top: 20px;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    .notice-view-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .notice-view-content {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .notice-view-date {
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Siliguri Government Polytechnic Notice Board</h1>
+
+  <div class="notice-board">
+    <div class="notice">
+      <div class="notice-title">Notice 1</div>
+      <div class="notice-content">
+        This is the content of Notice 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique amet maxime nisi. Consectetur quam voluptatibus rem quisquam dolores doloribus, dolore illum consequuntur saepe similique expedita nihil molestias distinctio provident?
+      </div>
+      <div class="notice-date">Posted on: June 20, 2023</div>
+      <div class="notice-actions">
+        <a href="#" class="view-notice">View</a>
+       
+      </div>
+    </div>
+
+    <div class="notice">
+      <div class="notice-title">Notice 2</div>
+      <div class="notice-content">
+        This is the content of Notice 2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus ipsam rem fugit libero fuga vel aspernatur ullam, deleniti, sed eos dignissimos illum voluptas at aliquam! Modi cum aliquid maxime voluptate!
+      </div>
+      <div class="notice-date">Posted on: June 19, 2023</div>
+      <div class="notice-actions">
+        <a href="#" class="view-notice">View</a>
+       
+      </div>
+    </div>
+
+    <!-- Add more notices here -->
+
+  </div>
+
+   <div class="notice-view" style="display: none;">
+   <div class="notice-view-title"></div>
+   <div class="notice-view-content"></div>
+   <div class="notice-view-date"></div>
+  </div>
+
+  <div class="add-notice-form">
+    <h2>Add Notice</h2>
+    <form>
+      <div class="form-group">
+        <label for="notice-title">Title:</label>
+        <input type="text" id="notice-title" name="notice-title" required>
+      </div>
+      <div class="form-group">
+        <label for="notice-content">Content:</label>
+        <textarea id="notice-content" name="notice-content" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <!--Add more script-->
+  <script>
+    const viewNoticeLinks = document.querySelectorAll('.view-notice');
+    const noticeView = document.querySelector('.notice-view');
+
+    viewNoticeLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const notice = link.closest('.notice');
+        const noticeTitle = notice.querySelector('.notice-title').innerText;
+        const noticeContent = notice.querySelector('.notice-content').innerText;
+        const noticeDate = notice.querySelector('.notice-date').innerText;
+
+        noticeView.querySelector('.notice-view-title').innerText = noticeTitle;
+        noticeView.querySelector('.notice-view-content').innerText = noticeContent;
+        noticeView.querySelector('.notice-view-date').innerText = noticeDate;
+
+        noticeView.style.display = 'block';
+         // Add event listener to form submission
+         document.getElementById('notice-form').addEventListener('submit', addNotice);
+  
+      });
+    });
+  </script>
+
+</body>
+</html>
